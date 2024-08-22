@@ -14,7 +14,7 @@ export default function LandingCompo(){
                 </div>
             </div>
             <div>
-                <img src="sec-1-img-1.jpeg" style={{marginLeft:'5%', width: "90%",alignSelf:"end" }}></img>
+                <img src="sec-1-img-1.png" style={{marginLeft:'5%', width: "90%",alignSelf:"end" }}></img>
             </div>
         </div>
     )
