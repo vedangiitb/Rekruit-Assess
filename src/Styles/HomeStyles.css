@@ -1,0 +1,244 @@
+.HomeSection1 {
+    display: flex;
+    flex-direction: row;
+    padding-top: 5%;
+    padding-right: 0%;
+    padding-left: 4%;
+    text-align: left;
+    background-color: white;
+}
+
+.sec-1-heading{
+    color: #001427;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-weight: 550;
+    font-size: 45px;
+}
+
+.sec-1-text{
+    color: #001427;
+    font-size: 23px;
+    padding-right: 10%;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.HomeSection2 {
+    display: flex;
+    flex-direction: row;
+    align-items: end;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    padding-left: 4%;
+    background-color: #001427;
+    color: white;
+    text-align: left;
+    padding-right: 2%;
+}
+
+.sec-2-heading{
+    color: white;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-weight: 550;
+    font-size: 45px;
+}
+
+.sec-2-text{
+    color: #AF9F70;
+    font-size: 23px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.HomeSection3{
+    display: flex;
+    flex-direction: row;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    padding-left: 10%;
+}
+
+.HomeSection3-sub {
+    display: flex;
+    flex-direction: column;
+    padding-right: 2%;
+    padding-left: 10%;
+    text-align: left;
+}
+
+.background-container{
+    position: relative;
+    height: 100%;
+    background: url('sec-3-bg-img.png') no-repeat center center/cover;
+}
+
+.background-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:#001427c5;
+    z-index: 1;
+}
+
+.sec-3-heading{
+    color: white;
+    position: relative;
+    z-index: 2;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-weight: 550;
+    font-size: 45px;
+}
+
+.sec-3-content{
+    color: white;
+    position: relative;
+    z-index: 2;
+    font-size: 23px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.HomeSection4 {
+    display: flex;
+    flex-direction: column;
+    background-color: #001427;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    padding-left: 4%;
+    text-align: left;
+}
+
+.sec-4-heading{
+    color: white;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-weight: 550;
+    font-size: 45px;
+}
+
+.sec-4-card{
+    background-color: #1d3557;
+    display: flex;
+    flex-direction: row;
+    padding: 1.5%;
+    color: white;
+    margin: 2%;
+}
+
+.card-title-s4{
+    color:#ffffff;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 550;
+    font-size: 30px;
+}
+
+.card-body-s4{
+    width: 60%;
+    margin-left: 5%;
+}
+
+.card-text-s4{
+    color: white;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 21px;
+}
+
+.right-card{
+    margin-left: 20%;
+}
+
+.HomeSection5 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5%;
+    justify-content: center;
+    background-color: #001427;
+    color: white;
+}
+
+.HomeSection5-Text {
+    width: 50%;
+    text-align: center;
+}
+
+.HomeSection5-Btn {
+    padding: 10%;
+    white-space: nowrap;
+}
+
+.home4Img {
+    width: 38%;
+}
+
+.sec3img-2 {
+    margin-left: 10%;
+}
+
+
+@media only screen and (max-width: 768px) {
+    .HomeSection1 {
+        height: 50vh;
+    }
+
+    .HomeSection2-Items {
+        flex-direction: column;
+    }
+
+    .HomeSection2-Item {
+        width: 90%;
+    }
+
+    .HomeSection3-Items {
+        flex-direction: column;
+    }
+
+    .HomeSection3 {
+        padding: 2%;
+    }
+
+    .HomeSection3-Item1 {
+        width: 90%;
+        margin-left: 0%;
+    }
+
+    .HomeSection3-Item2 {
+        width: 90%;
+    }
+
+    .sec3-img {
+        width: 98%;
+        position: relative;
+        filter: brightness(30%);
+    }
+
+    .sec3img-2 {
+        margin-left: 0%;
+    }
+
+    .HomeSection3-Item1 {
+        position: absolute;
+        padding: 2%;
+    }
+
+    .HomeSection5-Text {
+        width: 90%;
+    }
+
+    .home4Img {
+        width: 95%;
+        height: 100vh;
+        position: relative;
+        overflow: hidden;
+        object-fit: cover;
+        filter: brightness(20%);
+    }
+
+    .HomeSection4 {
+        padding-left: 2%;
+    }
+
+    .HomeSection4-Item-Container {
+        position: absolute;
+        width: 80%;
+    }
+}

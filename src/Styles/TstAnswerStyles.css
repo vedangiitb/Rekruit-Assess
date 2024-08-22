@@ -1,0 +1,113 @@
+.runTestsTop {
+    height: 6vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 30px;
+    padding-bottom: 15px;
+    border-radius: 10px 10px 1px 1px;
+    background-color: #f0f0f0;
+    border-bottom: 1px solid #ccc;
+}
+
+.runTests {
+    position: fixed;
+    bottom: 0;
+    width: 48%;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 7px 7px 0 0;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.runTests.open {
+    height: 60vh;
+    overflow: auto;
+}
+
+.runTestsContent {
+    padding: 20px;
+}
+
+.testCases {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.testCase {
+    border-radius: 10px;
+    padding: 5px 10px;
+    border: '1px solid #ccc';
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.testCase-add{
+    border-radius: 10px;
+    padding: 5px;
+    border: '1px solid #ccc';
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+}
+
+.testCase-add:hover{
+    background-color: #f3f3f3;
+}
+
+
+.testCase:hover {
+    background-color: #f3f3f3;
+}
+
+.testCase.selected {
+    background-color: #e5e5e5;
+}
+
+.testInput {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: none;
+    margin-top: 20px;
+}
+
+.outputSection {
+    margin-top: 20px;
+}
+
+.outputSection p {
+    margin: 10px 0 5px;
+}
+
+.delete-icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+    color: rgb(60, 60, 60);
+    border-radius: 50%;
+    background-color: rgb(133, 133, 133);
+    width: 14px;
+    height: 14px;
+    font-size: 10px;
+    text-align: center;
+    transform: translateY(-50%);
+    display: none;
+    cursor: pointer;
+}
+
+.testCase-container {
+    display: flex;
+    align-items: center;
+    position: relative; /* Important for positioning the delete icon */
+}
+
+
+.testCase-container:hover .delete-icon {
+    display: inline;
+}
