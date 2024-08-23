@@ -78,11 +78,11 @@ function App() {
           <Route path="/register" element={<RegisterPage signUp={signUpUser} />} />
           <Route path="/login" element={<SignInPage login={(username, password) => currentUser(username, password)} />} />
           <Route path="/firm-onboarding" element={<NewFirm signUp={signUp} />} />
-          <Route path='/create-test' element={<CreateTestPage />}></Route>
-          <Route path='/answer-test/:id' element={<AnswerTestWrapper user={currentUser}/>}></Route>
+          <Route path='/create-test' element={<CreateTestPage user={currentUser} />}></Route>
+          <Route path='/answer-test/:id' element={<AnswerTestWrapper user={currentUser} />}></Route>
           <Route path='/account' element={<AccountPage user={currentUser} logoutUser={logout} loginUser={login} />} />
           <Route path='/test-created/:id' element={<TestCreated />}></Route>
-          <Route path='/edit-test/:id' element={<EditQuestions />}></Route>
+          <Route path='/edit-test/:id' element={<EditQuestions user={currentUser} />}></Route>
         </Routes>
       </Router>
     </div>

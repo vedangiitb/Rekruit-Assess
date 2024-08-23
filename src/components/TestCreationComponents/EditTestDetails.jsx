@@ -8,7 +8,7 @@ import '../../Styles/TstCreationStyles.css'
 import TimePicker from 'react-time-picker';
 import AddQuestionCompo from "./AddQuestionCompo";
 
-export default function EditTestDetails({ edit, testData }) {
+export default function EditTestDetails({ user, edit, testData }) {
     const [testName, setTestName] = useState('');
     const [dateSet, setDateSet] = useState(false);
     const [date, setDate] = useState(new Date());
@@ -23,7 +23,7 @@ export default function EditTestDetails({ edit, testData }) {
     const [quesId, setQuesId] = useState('')
     const [modifyingQues, setModifyingQues] = useState(false)
     const [selQuesData, setSelQuesData] = useState({})
-    const [modfiyInd,setModifInd] = useState(null)
+    const [modfiyInd, setModifInd] = useState(null)
 
     useEffect(() => {
         if (edit) {
@@ -52,7 +52,7 @@ export default function EditTestDetails({ edit, testData }) {
     }
 
 
-    const toggleExpand = (index,expand) => {
+    const toggleExpand = (index, expand) => {
         collapseExpModif()
         setExpanded(expanded.map((exp, i) => (i === index ? expand : exp)));
     };
@@ -109,6 +109,7 @@ export default function EditTestDetails({ edit, testData }) {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
+                    'Authorization': user.storage[user.userDataKey.slice(0, -8) + 'idToken']
                 },
                 body: JSON.stringify({
                     id: quesId,
@@ -122,11 +123,13 @@ export default function EditTestDetails({ edit, testData }) {
 
 
     const addNewTest = async () => {
-        if (testName) {
+        console.log(user)
+        if (testName && user) {
             const response = await fetch('https://6q3ugd55zc.execute-api.us-east-1.amazonaws.com/dev/create-test', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
+                    'Authorization': user.storage[user.userDataKey.slice(0, -8) + 'idToken']
                 },
                 body: JSON.stringify({
                     name: testName,
@@ -172,7 +175,7 @@ export default function EditTestDetails({ edit, testData }) {
         setModifInd(index)
     }
 
-    const saveModifyQues = (index,data) => {
+    const saveModifyQues = (index, data) => {
         let newQs = [...questions];
         newQs[index] = data;
         setQuestions(newQs);
@@ -230,13 +233,13 @@ export default function EditTestDetails({ edit, testData }) {
                                         <div style={{ display: "flex", gap: "5px" }}>
                                             <span class="material-symbols-outlined" onClick={() => editQues(index)}>edit</span>
                                             <span class="material-symbols-outlined" onClick={() => delQues(index)}>delete</span>
-                                            {expanded[index] || (modifyingQues && modfiyInd==index) ? <span class="material-symbols-outlined" onClick={() => toggleExpand(index,false)}>  keyboard_arrow_up</span> : <span class="material-symbols-outlined" onClick={() => toggleExpand(index,true)}>keyboard_arrow_down</span>}
+                                            {expanded[index] || (modifyingQues && modfiyInd == index) ? <span class="material-symbols-outlined" onClick={() => toggleExpand(index, false)}>  keyboard_arrow_up</span> : <span class="material-symbols-outlined" onClick={() => toggleExpand(index, true)}>keyboard_arrow_down</span>}
                                         </div>
 
                                     </div>
-                                    
+
                                 </div>
-                                {modifyingQues && modfiyInd==index && <AddQuestionCompo addQuestion={(data)=>saveModifyQues(index,data)} isModify={true} quesData={selQuesData} collapse={collapseExpModif}/>}
+                                {modifyingQues && modfiyInd == index && <AddQuestionCompo addQuestion={(data) => saveModifyQues(index, data)} isModify={true} quesData={selQuesData} collapse={collapseExpModif} />}
                                 {expanded[index] && (
                                     <div className="mt-3">
                                         <h3>{item.QuestionName}</h3>

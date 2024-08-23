@@ -31,7 +31,12 @@ export default function AnswerTestPage({ user, id }) {
     }, [])
 
     const fetchAndSaveserverData = async () => {
-        const response = await fetch(`https://6q3ugd55zc.execute-api.us-east-1.amazonaws.com/dev/get-test?id=${id}`)
+        const response = await fetch(`https://6q3ugd55zc.execute-api.us-east-1.amazonaws.com/dev/get-test?id=${id}`,{
+            headers:{
+                'Content-Type': 'application/json',
+                'Authorization':user.storage[user.userDataKey.slice(0,-8) + 'idToken']
+            }
+        })
         const data = await response.json()
         setData(data.Items[0])
         if (data.Items && data.Items[0].questions) {
@@ -94,7 +99,7 @@ export default function AnswerTestPage({ user, id }) {
     }
 
     const runExTests = async (code, lang) => {
-
+        console.log(user)
         let outputs = [];
         setRunTests(true)
         setIsRunning(true)
@@ -104,6 +109,7 @@ export default function AnswerTestPage({ user, id }) {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
+                        'Authorization':user.storage[user.userDataKey.slice(0,-8) + 'idToken']
                     },
                     body: JSON.stringify({
                         code: code,
@@ -145,10 +151,13 @@ export default function AnswerTestPage({ user, id }) {
     };
 
     const runFinalTests = async (code, lang) => {
+        console.log("YOOOO")
+        console.log(user)
         const response = await fetch('https://3bt5y0d6be.execute-api.us-east-1.amazonaws.com/dev/run-code', {
             method: 'POST',
-            headers: {
+            headers:{
                 'Content-Type': 'application/json',
+                'Authorization':user.storage[user.userDataKey.slice(0,-8) + 'idToken']
             },
             body: JSON.stringify({ tests: tests || [], code: code, language: lang }),
         });
@@ -159,7 +168,8 @@ export default function AnswerTestPage({ user, id }) {
             await fetch('https://qldr9qzi2i.execute-api.us-east-1.amazonaws.com/dev/create-sub', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Authorization':user.storage[user.userDataKey.slice(0,-8) + 'idToken']
                 },
                 body: JSON.stringify({ userId: user.username, testId: id, code: code, status: 'Failed', quesNo: '1', output: formattedOutput })
             })
@@ -180,7 +190,8 @@ export default function AnswerTestPage({ user, id }) {
             await fetch('https://qldr9qzi2i.execute-api.us-east-1.amazonaws.com/dev/create-sub', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Authorization':user.storage[user.userDataKey.slice(0,-8) + 'idToken']
                 },
                 body: JSON.stringify({ userId: user.username, testId: id, code: code, status: status || 'Failed', quesNo: '1', output: formattedOutput })
             })
@@ -230,7 +241,7 @@ export default function AnswerTestPage({ user, id }) {
 
                             {isQues && <QuestionsCompo questionName={quesName} question={question} egTests={egTestsDisp} inpCnst={inpCnst} />}
 
-                            {!isQues && <SubmissionsCompo subOpt={subOpt} userId={user.username} testId={id} quesNo={1} />}
+                            {!isQues && <SubmissionsCompo user={user} subOpt={subOpt} userId={user.username} testId={id} quesNo={1} />}
 
                         </div>
 
